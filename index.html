@@ -1,0 +1,1088 @@
+<!DOCTYPE html>
+<html lang="tr" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alper Deri | Hakiki Deri Kılıf, Kemer & Fişeklik Atölyesi</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts: Inter & Playfair Display -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            serif: ['Cinzel', 'serif'],
+          },
+          colors: {
+            leather: {
+              50: '#fbf7f4',
+              100: '#f6ece4',
+              200: '#edd8c9',
+              300: '#e0bca4',
+              400: '#ce997a',
+              500: '#be7b55',
+              600: '#ad6444',
+              700: '#8f4e37',
+              800: '#754030',
+              900: '#5f352a',
+              950: '#331a14',
+            },
+            bronze: {
+              400: '#d4af37',
+              500: '#c59b27',
+              600: '#a37c18',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Custom subtle textures and scrollbar styling */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #181514;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #443834;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #754030;
+    }
+  </style>
+</head>
+
+<body class="bg-stone-950 text-stone-100 font-sans antialiased min-h-screen flex flex-col selection:bg-amber-800 selection:text-white">
+
+  <!-- Top Announcement Bar -->
+  <div class="bg-gradient-to-r from-amber-950 via-stone-900 to-amber-950 border-b border-amber-900/30 text-amber-200/90 text-xs py-2 px-4 text-center font-medium flex items-center justify-center gap-2">
+    <i data-lucide="shield-check" class="w-4 h-4 text-amber-400 inline"></i>
+    <span>%100 Hakiki Vaketa Deri • Sağlam Makine Dikişi • Özel Motif & Desen İşlemeleri • Bıçak Satışımız Yoktur</span>
+  </div>
+
+  <!-- Main Navigation Bar -->
+  <header class="sticky top-0 z-40 bg-stone-950/90 backdrop-blur-md border-b border-stone-800/80 transition-all">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      
+      <!-- Brand / Logo -->
+      <a href="#" class="flex items-center gap-3 group">
+        <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-amber-700 to-stone-900 flex items-center justify-center border border-amber-600/40 shadow-lg shadow-amber-950/40 group-hover:border-amber-500 transition-colors">
+          <i data-lucide="scissors" class="w-6 h-6 text-amber-300 transform -rotate-45"></i>
+        </div>
+        <div>
+          <span id="nav-brand-title" class="font-serif tracking-widest text-lg sm:text-xl font-bold uppercase text-stone-100 block group-hover:text-amber-300 transition-colors">
+            ALPER DERİ
+          </span>
+          <span class="text-[10px] uppercase tracking-widest text-amber-500/80 font-medium block">
+            Özel Deri Kılıf & Donanım Atölyesi
+          </span>
+        </div>
+      </a>
+
+      <!-- Navigation Links (Desktop) -->
+      <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-stone-300">
+        <a href="#katalog" class="hover:text-amber-400 transition-colors">Ürünler</a>
+        <a href="#ozel-siparis" class="hover:text-amber-400 transition-colors">Bıçağınıza Özel Kılıf</a>
+        <a href="#hakkimizda" class="hover:text-amber-400 transition-colors">İşçiliğimiz</a>
+        <a href="#sss" class="hover:text-amber-400 transition-colors">S.S.S</a>
+      </nav>
+
+      <!-- Action Buttons (WhatsApp Settings, Cart) -->
+      <div class="flex items-center gap-3">
+        <!-- Store / Phone Setup Button -->
+        <button onclick="toggleSettingsModal(true)" title="WhatsApp Numara ve Mağaza Ayarları" class="p-2.5 rounded-xl bg-stone-900 border border-stone-800 hover:border-amber-600/50 hover:bg-stone-800 text-stone-300 transition-all">
+          <i data-lucide="settings" class="w-5 h-5"></i>
+        </button>
+
+        <!-- Cart / Order Basket Button -->
+        <button onclick="toggleCartDrawer(true)" class="relative flex items-center gap-2.5 px-4 py-2.5 rounded-xl bg-stone-900 border border-stone-800 hover:border-amber-600/50 hover:bg-stone-800 text-stone-100 transition-all shadow-md">
+          <i data-lucide="shopping-bag" class="w-5 h-5 text-amber-400"></i>
+          <span class="hidden sm:inline text-sm font-medium">Sipariş Listem</span>
+          <span id="cart-counter" class="bg-amber-600 text-white text-xs font-bold px-2 py-0.5 rounded-full">0</span>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="relative py-16 sm:py-24 overflow-hidden border-b border-stone-800/60">
+    <div class="absolute inset-0 z-0 opacity-20 pointer-events-none bg-[radial-gradient(#b45309_1px,transparent_1px)] [background-size:24px_24px]"></div>
+    <div class="absolute -top-32 -left-32 w-96 h-96 bg-amber-900/20 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="absolute -bottom-32 -right-32 w-96 h-96 bg-amber-700/10 rounded-full blur-3xl pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        
+        <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+          <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-amber-950/60 border border-amber-700/40 text-amber-300 text-xs uppercase tracking-widest font-semibold">
+            <i data-lucide="flame" class="w-3.5 h-3.5 text-amber-500"></i>
+            Elden Ele Yaşayan Hakiki Deri
+          </div>
+          
+          <h1 class="text-3xl sm:text-5xl lg:text-6xl font-serif font-bold text-stone-100 leading-tight">
+            Vaketa Deriden <br>
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-amber-300 to-amber-600">
+              Kılıf, Kemer & Fişeklik
+            </span>
+          </h1>
+
+          <p class="text-stone-300 text-base sm:text-lg max-w-2xl leading-relaxed">
+            Av bıçaklarınız, tabancalarınız ve tüfekleriniz için birinci sınıf vaketa deriden, yüksek mukavemetli ağır hizmet makine dikişi ve atölyemize has özel motif işlemeleriyle üretim yapıyoruz.
+          </p>
+
+          <!-- Important Warning Note -->
+          <div class="inline-flex items-center gap-2 p-3 rounded-xl bg-amber-950/40 border border-amber-600/30 text-xs text-amber-200 text-left">
+            <i data-lucide="info" class="w-4 h-4 text-amber-400 flex-shrink-0"></i>
+            <span><strong>Önemli Bilgilendirme:</strong> Atölyemizde bıçak üretimi veya satışı <u>yapılmamaktadır</u>. Kılıf fiyatlarına bıçaklar dahil değildir; kılıflar kendi bıçaklarınıza özel kalıplanır.</span>
+          </div>
+
+          <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-2">
+            <a href="#katalog" class="px-7 py-3.5 rounded-xl bg-gradient-to-r from-amber-600 to-amber-700 hover:from-amber-500 hover:to-amber-600 text-white font-semibold text-sm shadow-xl shadow-amber-900/30 flex items-center gap-2 transition-all transform hover:-translate-y-0.5">
+              <span>Ürünleri İncele</span>
+              <i data-lucide="arrow-down" class="w-4 h-4"></i>
+            </a>
+
+            <button onclick="directGeneralWhatsAppInquiry()" class="px-7 py-3.5 rounded-xl bg-stone-900 hover:bg-stone-800 border border-stone-700 text-stone-200 font-semibold text-sm flex items-center gap-2 transition-all">
+              <i data-lucide="message-circle" class="w-4 h-4 text-green-400"></i>
+              <span>WhatsApp'tan Danış (0535 659 54 34)</span>
+            </button>
+          </div>
+
+          <!-- Feature badges -->
+          <div class="grid grid-cols-3 gap-4 pt-6 border-t border-stone-800/80">
+            <div>
+              <p class="text-xl sm:text-2xl font-bold font-serif text-amber-400">3.5-4.0 mm</p>
+              <p class="text-xs text-stone-400">Dolu Vaketa Deri</p>
+            </div>
+            <div>
+              <p class="text-xl sm:text-2xl font-bold font-serif text-amber-400">Makine Dikişi</p>
+              <p class="text-xs text-stone-400">Ağır Hizmet Saraç İpi</p>
+            </div>
+            <div>
+              <p class="text-xl sm:text-2xl font-bold font-serif text-amber-400">Motif İşleme</p>
+              <p class="text-xs text-stone-400">Özel Desen Baskı</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hero visual banner / cards preview -->
+        <div class="lg:col-span-5 relative">
+          <div class="relative mx-auto max-w-md rounded-2xl overflow-hidden border border-amber-900/40 shadow-2xl shadow-black/80 bg-stone-900">
+            <img 
+              src="https://images.unsplash.com/photo-1549465220-1a8b9238cd48?q=80&w=1000&auto=format&fit=crop" 
+              alt="Deri Zanaatı Atölye" 
+              onerror="this.src='https://placehold.co/600x600/292524/f59e0b?text=Deri+Zanaat+Atolyesi'"
+              class="w-full h-80 sm:h-96 object-cover opacity-90 hover:scale-105 transition-transform duration-700"
+            >
+            <div class="absolute inset-0 bg-gradient-to-t from-stone-950 via-stone-950/40 to-transparent"></div>
+            <div class="absolute bottom-4 left-4 right-4 p-4 rounded-xl bg-stone-900/90 backdrop-blur-md border border-stone-700/60">
+              <div class="flex items-center justify-between">
+                <div>
+                  <span class="text-xs text-amber-400 uppercase tracking-wider font-semibold">Usta Tavsiyesi</span>
+                  <h3 class="text-sm font-bold text-stone-100">Ömürlük Bushcraft & Av Kılıfları</h3>
+                </div>
+                <span class="px-2.5 py-1 rounded bg-amber-950 text-amber-300 text-xs font-medium border border-amber-700/50">El Yapımı</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Product Catalog Section -->
+  <main id="katalog" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 flex-1 w-full">
+    
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
+      <div>
+        <h2 class="text-2xl sm:text-3xl font-serif font-bold text-stone-100 tracking-wide">
+          Atölye Koleksiyonu
+        </h2>
+        <p class="text-stone-400 text-sm mt-1">
+          Beğendiğiniz ürünü doğrudan WhatsApp'tan sipariş verebilir veya listenize ekleyebilirsiniz.
+        </p>
+      </div>
+
+      <!-- Categories Filter Tabs -->
+      <div class="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none">
+        <button onclick="setCategory('all')" id="btn-cat-all" class="cat-btn active whitespace-nowrap px-4 py-2 rounded-xl text-xs sm:text-sm font-medium transition-all bg-amber-600 text-white shadow-md shadow-amber-900/30">
+          Tüm Ürünler
+        </button>
+        <button onclick="setCategory('bicak-kilifi')" id="btn-cat-bicak-kilifi" class="cat-btn whitespace-nowrap px-4 py-2 rounded-xl text-xs sm:text-sm font-medium transition-all bg-stone-900 hover:bg-stone-800 text-stone-300 border border-stone-800">
+          Bıçak Kılıfları
+        </button>
+        <button onclick="setCategory('silah-kilifi')" id="btn-cat-silah-kilifi" class="cat-btn whitespace-nowrap px-4 py-2 rounded-xl text-xs sm:text-sm font-medium transition-all bg-stone-900 hover:bg-stone-800 text-stone-300 border border-stone-800">
+          Silah Kılıfları
+        </button>
+        <button onclick="setCategory('kemer')" id="btn-cat-kemer" class="cat-btn whitespace-nowrap px-4 py-2 rounded-xl text-xs sm:text-sm font-medium transition-all bg-stone-900 hover:bg-stone-800 text-stone-300 border border-stone-800">
+          Kemerler
+        </button>
+        <button onclick="setCategory('fiseklik')" id="btn-cat-fiseklik" class="cat-btn whitespace-nowrap px-4 py-2 rounded-xl text-xs sm:text-sm font-medium transition-all bg-stone-900 hover:bg-stone-800 text-stone-300 border border-stone-800">
+          Fişeklikler
+        </button>
+      </div>
+    </div>
+
+    <!-- Product Grid -->
+    <div id="products-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+      <!-- Injected via JavaScript -->
+    </div>
+
+    <!-- Empty State -->
+    <div id="empty-state" class="hidden text-center py-16 bg-stone-900/50 rounded-2xl border border-stone-800">
+      <i data-lucide="package-search" class="w-12 h-12 text-stone-500 mx-auto mb-3"></i>
+      <h3 class="text-base font-semibold text-stone-300">Bu kategoride henüz ürün bulunmuyor</h3>
+      <p class="text-xs text-stone-500 mt-1">Özel sipariş oluşturmak için WhatsApp üzerinden atölyemizle iletişime geçebilirsiniz.</p>
+    </div>
+
+  </main>
+
+  <!-- Custom Order / Measurement Section -->
+  <section id="ozel-siparis" class="bg-stone-900/80 border-y border-amber-950/40 py-14">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="bg-gradient-to-r from-amber-950/60 via-stone-900 to-amber-950/60 rounded-3xl p-8 sm:p-12 border border-amber-700/30 relative overflow-hidden">
+        
+        <div class="relative z-10 max-w-2xl space-y-4">
+          <span class="px-3 py-1 rounded-full bg-amber-500/20 text-amber-300 text-xs font-semibold border border-amber-500/30 uppercase tracking-wider">
+            Bıçağınıza Birebir Kalıp Hizmeti
+          </span>
+          <h2 class="text-2xl sm:text-3xl font-serif font-bold text-stone-100">
+            Kılıf İçin Bıçağınızı Atölyemize Kargolayın
+          </h2>
+          <p class="text-stone-300 text-sm leading-relaxed">
+            Biz bıçak imalatı yapmıyoruz; sizin mevcut av ve kamp bıçaklarınıza özel kılıf üretiyoruz. Bıçağın kılıfa sıfıra sıfır oturması, düşmemesi ve kilit mekanizmasının kusursuz çalışabilmesi için <strong>bıçağınızı güvenli şekilde atölyemize kargolamanız gerekmektedir</strong>. Birebir kalıp çıkarılarak, atölyemizdeki mevcut motif işlemeleri ve sağlam makine dikişiyle kılıfınız üretilip bıçağınızla birlikte geri gönderilir.
+          </p>
+
+          <div class="pt-2 flex flex-wrap gap-4">
+            <button onclick="orderCustomMeasurement()" class="px-6 py-3 rounded-xl bg-green-600 hover:bg-green-500 text-white font-semibold text-sm flex items-center gap-2 shadow-lg shadow-green-950/50 transition-all">
+              <i data-lucide="message-circle" class="w-4 h-4"></i>
+              <span>Kargo Adresi ve Kalıp Fiyatı Al (WhatsApp)</span>
+            </button>
+            <a href="#hakkimizda" class="px-6 py-3 rounded-xl bg-stone-800 hover:bg-stone-700 text-stone-200 text-sm font-medium transition-all">
+              Üretim ve İşleme Detayları
+            </a>
+          </div>
+        </div>
+
+        <div class="hidden lg:block absolute -right-10 -bottom-10 opacity-15 pointer-events-none">
+          <i data-lucide="shield" class="w-96 h-96 text-amber-400"></i>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- About Craftsmanship -->
+  <section id="hakkimizda" class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center max-w-2xl mx-auto mb-12">
+      <h2 class="text-2xl sm:text-3xl font-serif font-bold text-stone-100">Alper Deri Üretim Standartları</h2>
+      <p class="text-stone-400 text-sm mt-2">Deri kılıf, kemer ve fişeklik üretiminde uyguladığımız ustalık adımları</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="bg-stone-900/60 p-6 rounded-2xl border border-stone-800 hover:border-amber-700/40 transition-all">
+        <div class="w-12 h-12 rounded-xl bg-amber-950/60 border border-amber-700/40 flex items-center justify-center text-amber-400 mb-4">
+          <i data-lucide="layers" class="w-6 h-6"></i>
+        </div>
+        <h3 class="text-lg font-bold font-serif text-stone-200">1. Birinci Sınıf Vaketa Deri</h3>
+        <p class="text-stone-400 text-sm mt-2 leading-relaxed">
+          Kromsuz, bitkisel tabaklanmış 3.5 - 4 mm kalınlığında hakiki sığır ve manda derileri seçilerek kılıfın formunu onlarca yıl koruması sağlanır.
+        </p>
+      </div>
+
+      <div class="bg-stone-900/60 p-6 rounded-2xl border border-stone-800 hover:border-amber-700/40 transition-all">
+        <div class="w-12 h-12 rounded-xl bg-amber-950/60 border border-amber-700/40 flex items-center justify-center text-amber-400 mb-4">
+          <i data-lucide="cpu" class="w-6 h-6"></i>
+        </div>
+        <h3 class="text-lg font-bold font-serif text-stone-200">2. Ağır Hizmet Makine Dikişi</h3>
+        <p class="text-stone-400 text-sm mt-2 leading-relaxed">
+          Endüstriyel deri dikiş makinelerimiz ve kalın mukavemetli saraç ipleriyle kusursuz aralıklarla dikilir. Zorlu arazi şartlarında asla patlamaz.
+        </p>
+      </div>
+
+      <div class="bg-stone-900/60 p-6 rounded-2xl border border-stone-800 hover:border-amber-700/40 transition-all">
+        <div class="w-12 h-12 rounded-xl bg-amber-950/60 border border-amber-700/40 flex items-center justify-center text-amber-400 mb-4">
+          <i data-lucide="sparkles" class="w-6 h-6"></i>
+        </div>
+        <h3 class="text-lg font-bold font-serif text-stone-200">3. Özel Motif & Desen İşleme</h3>
+        <p class="text-stone-400 text-sm mt-2 leading-relaxed">
+          Atölyemizde bulunan zengin motif kalıpları (örgü, meşe yaprağı, geleneksel desenler) ile derinin üzerine kabartma pres işlemeleri uygulanır.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section id="sss" class="py-16 bg-stone-900/40 border-t border-stone-800/80">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6">
+      <div class="text-center mb-10">
+        <h2 class="text-2xl sm:text-3xl font-serif font-bold text-stone-100">Sıkça Sorulan Sorular</h2>
+        <p class="text-stone-400 text-sm mt-2">Kalıp çıkarma, kargo, dikiş ve işleme hakkında merak edilenler</p>
+      </div>
+
+      <div class="space-y-3">
+        <!-- FAQ 0 - Bıçak Dahil mi? -->
+        <div class="bg-stone-900 rounded-xl border border-amber-700/30 overflow-hidden">
+          <button onclick="toggleFaq(this)" class="w-full text-left p-4 sm:p-5 flex items-center justify-between text-amber-300 hover:text-amber-200 font-medium text-sm sm:text-base">
+            <span class="font-semibold">Kılıf fiyatlarına bıçak dahil mi? Bıçak satıyor musunuz?</span>
+            <i data-lucide="chevron-down" class="faq-chevron w-5 h-5 transition-transform duration-200 text-stone-400"></i>
+          </button>
+          <div class="faq-answer hidden px-4 sm:px-5 pb-5 text-stone-300 text-sm border-t border-stone-800/50 pt-3 leading-relaxed">
+            <strong>Kesinlikle hayır.</strong> Atölyemizde bıçak imalatı veya bıçak satışı yapılmamaktadır. Sitedeki fotoğraflarda görülen bıçaklar yalnızca kılıfın ölçüsünü ve duruşunu göstermek amacıyla çekilmiş temsilî ürünlerdir.
+          </div>
+        </div>
+
+        <!-- FAQ 1 - Bıçağı kargolama -->
+        <div class="bg-stone-900 rounded-xl border border-stone-800 overflow-hidden">
+          <button onclick="toggleFaq(this)" class="w-full text-left p-4 sm:p-5 flex items-center justify-between text-stone-200 hover:text-amber-400 font-medium text-sm sm:text-base">
+            <span>Kendi bıçağıma özel kılıf yaptırmak için ne yapmalıyım?</span>
+            <i data-lucide="chevron-down" class="faq-chevron w-5 h-5 transition-transform duration-200 text-stone-400"></i>
+          </button>
+          <div class="faq-answer hidden px-4 sm:px-5 pb-5 text-stone-400 text-sm border-t border-stone-800/50 pt-3 leading-relaxed">
+            Her bıçağın namlu eğimi, kalınlığı ve kabze yapısı farklıdır. Kılıfın gevşek kalmaması ve bıçağı tam kavraması için bıçağın atölyemize kargolanması gerekmektedir. WhatsApp üzerinden bizimle irtibata geçtikten sonra anlaşmalı kargo bilgilerimizi alıp bıçağınızı güvenle gönderebilirsiniz. Kılıf hazırlandığında bıçağınız kılıfıyla birlikte kargolanır.
+          </div>
+        </div>
+
+        <!-- FAQ 2 - Dikiş ve İşlemeler -->
+        <div class="bg-stone-900 rounded-xl border border-stone-800 overflow-hidden">
+          <button onclick="toggleFaq(this)" class="w-full text-left p-4 sm:p-5 flex items-center justify-between text-stone-200 hover:text-amber-400 font-medium text-sm sm:text-base">
+            <span>Dikişler nasıl yapılıyor ve deriye hangi işlemeler uygulanabilir?</span>
+            <i data-lucide="chevron-down" class="faq-chevron w-5 h-5 transition-transform duration-200 text-stone-400"></i>
+          </button>
+          <div class="faq-answer hidden px-4 sm:px-5 pb-5 text-stone-400 text-sm border-t border-stone-800/50 pt-3 leading-relaxed">
+            Tüm ürünlerimizde yüksek dayanımlı endüstriyel makine dikişi kullanılmaktadır. Deri üzerine işleme konusunda ise atölyemizde mevcut olan özel motif kalıpları (örgü deseni, geleneksel motifler vb.) arasından seçim yapabilirsiniz. Sipariş aşamasında mevcut motif seçeneklerinin fotoğraflarını WhatsApp üzerinden iletiyoruz.
+          </div>
+        </div>
+
+        <!-- FAQ 3 - WhatsApp Sipariş -->
+        <div class="bg-stone-900 rounded-xl border border-stone-800 overflow-hidden">
+          <button onclick="toggleFaq(this)" class="w-full text-left p-4 sm:p-5 flex items-center justify-between text-stone-200 hover:text-amber-400 font-medium text-sm sm:text-base">
+            <span>WhatsApp ile sipariş süreci nasıl işliyor?</span>
+            <i data-lucide="chevron-down" class="faq-chevron w-5 h-5 transition-transform duration-200 text-stone-400"></i>
+          </button>
+          <div class="faq-answer hidden px-4 sm:px-5 pb-5 text-stone-400 text-sm border-t border-stone-800/50 pt-3 leading-relaxed">
+            İstediğiniz ürünün altındaki <strong>"WhatsApp ile Sipariş"</strong> butonuna bastığınızda WhatsApp otomatik olarak açılır ve ürün bilgileri mesaj alanına dolar. Bize ulaştığınızda kargo adresi, işlemeli motif seçimi ve ödeme detayları belirlenerek siparişiniz işleme alınır.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Cart / Order Drawer (Slide Over) -->
+  <div id="cart-drawer" class="fixed inset-0 z-50 overflow-hidden hidden" aria-labelledby="slide-over-title" role="dialog" aria-modal="true">
+    <div class="absolute inset-0 bg-stone-950/80 backdrop-blur-sm transition-opacity" onclick="toggleCartDrawer(false)"></div>
+    <div class="fixed inset-y-0 right-0 max-w-full flex pl-10">
+      <div class="w-screen max-w-md bg-stone-900 border-l border-stone-800 p-6 flex flex-col justify-between shadow-2xl">
+        
+        <div>
+          <!-- Cart Header -->
+          <div class="flex items-center justify-between pb-4 border-b border-stone-800">
+            <div class="flex items-center gap-2">
+              <i data-lucide="shopping-bag" class="w-5 h-5 text-amber-400"></i>
+              <h2 class="font-serif font-bold text-lg text-stone-100">Sipariş Listesi</h2>
+            </div>
+            <button onclick="toggleCartDrawer(false)" class="text-stone-400 hover:text-stone-100 p-1 rounded-lg">
+              <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+          </div>
+
+          <!-- Cart Items Container -->
+          <div id="cart-items-list" class="mt-6 space-y-4 max-h-[60vh] overflow-y-auto pr-1">
+            <!-- Injected via JS -->
+          </div>
+          
+          <!-- Empty Cart Notice -->
+          <div id="cart-empty-message" class="text-center py-12">
+            <i data-lucide="package-open" class="w-10 h-10 text-stone-600 mx-auto mb-2"></i>
+            <p class="text-stone-400 text-sm">Sipariş listenizde ürün bulunmuyor.</p>
+            <p class="text-stone-600 text-xs mt-1">Ürün kartlarındaki "Sepete Ekle" butonunu kullanabilirsiniz.</p>
+          </div>
+        </div>
+
+        <!-- Cart Footer -->
+        <div id="cart-footer" class="border-t border-stone-800 pt-5 space-y-4">
+          <div class="flex items-center justify-between text-stone-300">
+            <span class="text-sm">Tahmini Toplam Tutar:</span>
+            <span id="cart-total-amount" class="text-xl font-bold font-serif text-amber-400">0 ₺</span>
+          </div>
+          
+          <button onclick="sendBulkWhatsAppOrder()" class="w-full py-3.5 px-4 rounded-xl bg-green-600 hover:bg-green-500 text-white font-semibold text-sm flex items-center justify-center gap-2 shadow-lg shadow-green-950/60 transition-all">
+            <i data-lucide="message-circle" class="w-5 h-5"></i>
+            <span>Tüm Listeyi WhatsApp ile Sipariş Ver</span>
+          </button>
+          <p class="text-[11px] text-stone-500 text-center">
+            Siparişiniz WhatsApp mesajı olarak düzenlenecektir. Onay ve ödeme konuşma üzerinden tamamlanır.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Settings / WhatsApp Config Modal -->
+  <div id="settings-modal" class="fixed inset-0 z-50 overflow-y-auto hidden">
+    <div class="min-h-screen px-4 text-center flex items-center justify-center">
+      <div class="fixed inset-0 bg-black/80 backdrop-blur-sm transition-opacity" onclick="toggleSettingsModal(false)"></div>
+      
+      <div class="inline-block w-full max-w-md p-6 my-8 text-left bg-stone-900 border border-stone-700/80 rounded-2xl shadow-2xl relative z-10">
+        <div class="flex items-center justify-between pb-3 border-b border-stone-800">
+          <div class="flex items-center gap-2">
+            <i data-lucide="sliders" class="w-5 h-5 text-amber-400"></i>
+            <h3 class="text-base font-bold font-serif text-stone-100">WhatsApp & Atölye Bilgileri</h3>
+          </div>
+          <button onclick="toggleSettingsModal(false)" class="text-stone-400 hover:text-stone-200">
+            <i data-lucide="x" class="w-5 h-5"></i>
+          </button>
+        </div>
+
+        <p class="text-xs text-stone-400 mt-3 leading-relaxed">
+          Müşterilerin "WhatsApp ile Sipariş" butonuna bastığında mesajın gideceği telefon numarasını ve mağaza adınızı buradan istediğiniz zaman güncelleyebilirsiniz.
+        </p>
+
+        <form onsubmit="saveSettings(event)" class="mt-4 space-y-4">
+          <div>
+            <label class="block text-xs font-medium text-stone-300 mb-1">WhatsApp Telefon Numarası</label>
+            <div class="relative">
+              <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-stone-500 text-xs font-mono">+</span>
+              <input type="text" id="setting-phone" required value="905356595434" placeholder="905356595434" class="w-full pl-7 pr-3 py-2.5 bg-stone-950 border border-stone-700 rounded-xl text-stone-100 text-sm focus:outline-none focus:border-amber-500 font-mono">
+            </div>
+            <span class="text-[10px] text-stone-500 mt-1 block">Mevcut numaranız: 0535 659 54 34 (Başında 90 olacak şekilde)</span>
+          </div>
+
+          <div>
+            <label class="block text-xs font-medium text-stone-300 mb-1">Atölye / Marka Adı</label>
+            <input type="text" id="setting-store-name" required value="Alper Deri" placeholder="Alper Deri" class="w-full px-3 py-2.5 bg-stone-950 border border-stone-700 rounded-xl text-stone-100 text-sm focus:outline-none focus:border-amber-500">
+          </div>
+
+          <div class="pt-2 flex gap-3">
+            <button type="submit" class="flex-1 py-2.5 rounded-xl bg-amber-600 hover:bg-amber-500 text-white text-sm font-semibold transition-all">
+              Ayarları Kaydet
+            </button>
+            <button type="button" onclick="toggleSettingsModal(false)" class="px-4 py-2.5 rounded-xl bg-stone-800 hover:bg-stone-700 text-stone-300 text-sm transition-all">
+              İptal
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Product Detail Modal -->
+  <div id="product-modal" class="fixed inset-0 z-50 overflow-y-auto hidden">
+    <div class="min-h-screen px-4 text-center flex items-center justify-center">
+      <div class="fixed inset-0 bg-black/80 backdrop-blur-sm transition-opacity" onclick="closeProductModal()"></div>
+      
+      <div class="inline-block w-full max-w-2xl my-8 text-left bg-stone-900 border border-stone-700/80 rounded-2xl shadow-2xl overflow-hidden relative z-10">
+        <div id="modal-content">
+          <!-- Injected dynamically via JS -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-stone-950 border-t border-stone-800/80 py-12 text-stone-400 text-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
+      
+      <div>
+        <div class="flex items-center gap-2 mb-2">
+          <i data-lucide="scissors" class="w-5 h-5 text-amber-500 transform -rotate-45"></i>
+          <span id="footer-brand-title" class="font-serif font-bold text-stone-200 tracking-wider">ALPER DERİ ATÖLYESİ</span>
+        </div>
+        <p class="text-xs text-stone-500 leading-relaxed">
+          Hakiki vaketa deriden sağlam makine dikişi ve motif işlemeleriyle üretilmiş kılıf, kemer ve fişeklikler. Kılıflarımız kişiye özel kalıplanır; bıçak satışı yapılmamaktadır.
+        </p>
+      </div>
+
+      <div class="text-center md:text-left space-y-1">
+        <p class="text-xs text-stone-400"><strong class="text-stone-300">WhatsApp Sipariş & Kalıp Hattı:</strong> 0535 659 54 34</p>
+        <p class="text-xs text-stone-500">Bıçağınıza özel kılıf yaptırmak için kargo adresi isteyebilirsiniz.</p>
+      </div>
+
+      <div class="flex flex-col md:items-end gap-3">
+        <button onclick="directGeneralWhatsAppInquiry()" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-stone-900 hover:bg-stone-800 border border-stone-700 text-stone-200 text-xs font-semibold">
+          <i data-lucide="message-circle" class="w-4 h-4 text-green-400"></i>
+          <span>WhatsApp Hattımıza Ulaşın</span>
+        </button>
+        <p class="text-[11px] text-stone-600">
+          © <span id="current-year"></span> Tüm Hakları Saklıdır.
+        </p>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- Notification Toast Container -->
+  <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none flex items-center gap-3 px-4 py-3 rounded-xl bg-stone-900 border border-amber-600/50 text-stone-100 shadow-2xl">
+    <span class="toast-icon-wrapper flex items-center justify-center text-amber-400">
+      <i data-lucide="check-circle" class="w-5 h-5"></i>
+    </span>
+    <span id="toast-message" class="text-xs sm:text-sm font-medium">İşlem tamamlandı</span>
+  </div>
+
+  <!-- Application Logic -->
+  <script>
+    // -------------------------------------------------------------
+    // Configuration & Persistent State
+    // -------------------------------------------------------------
+    const DEFAULT_CONFIG = {
+      whatsappNumber: '905356595434', // 0535 659 54 34
+      storeName: 'Alper Deri'
+    };
+
+    // Alper Deri bilgileri ile öncelikli eşitleme
+    let appConfig = {
+      whatsappNumber: localStorage.getItem('dd_phone_alper') || DEFAULT_CONFIG.whatsappNumber,
+      storeName: localStorage.getItem('dd_store_alper') || DEFAULT_CONFIG.storeName
+    };
+
+    // Products Database: Bıçak Kılıfı, Silah Kılıfı, Kemer, Fişeklik
+    const PRODUCTS = [
+      // 1. BIÇAK KILIFLARI
+      {
+        id: 'bk-01',
+        name: 'Motif İşlemeli Bushcraft Av Bıçağı Kılıfı',
+        category: 'bicak-kilifi',
+        categoryName: 'Bıçak Kılıfı',
+        price: 1350,
+        image: 'https://images.unsplash.com/photo-1595341888016-a392ef81b7de?q=80&w=800&auto=format&fit=crop',
+        fallback: 'https://placehold.co/600x600/292524/f59e0b?text=Bicak+Kilifi+1',
+        description: '3.8 mm vaketa deri, sağlam makine dikişi, atölyemizdeki hazır desen kalıplarıyla kabartma işleme ve ateş başlatıcı yuvası. (Bıçak kılıfa dahil değildir, kalıp için bıçağınızı kargolamanız gerekir).',
+        leatherType: '3.8mm Sığır Vaketa',
+        specs: ['Bıçak DAHİL DEĞİLDİR', 'Sağlam Makine Dikişi', 'Özel Motif Baskısı', 'Kalıp İçin Kargolayınız']
+      },
+      {
+        id: 'bk-02',
+        name: 'Dangler Tipi Askılı & İşlemeli Bıçak Kılıfı',
+        category: 'bicak-kilifi',
+        categoryName: 'Bıçak Kılıfı',
+        price: 1450,
+        image: 'https://images.unsplash.com/photo-1589256469067-ea99122bbdc4?q=80&w=800&auto=format&fit=crop',
+        fallback: 'https://placehold.co/600x600/292524/f59e0b?text=Dangler+Kilif',
+        description: 'Döner pirinç halkalı Dangler sistemi. Deri yüzeyine atölyemizin zanaat motifleri işlenir. Bıçağınızın birebir ölçüsüne göre kalıplanır. (Bıçak dahil değildir).',
+        leatherType: '4mm Vaketa Deri',
+        specs: ['Bıçak DAHİL DEĞİLDİR', 'Deri Üzeri Motif İşleme', 'Endüstriyel Makine Dikişi', 'Pirinç D-Halka']
+      },
+      {
+        id: 'bk-03',
+        name: 'Çakı & Pense İçin Desenli Kemer Kılıfı',
+        category: 'bicak-kilifi',
+        categoryName: 'Bıçak Kılıfı',
+        price: 850,
+        image: 'https://images.unsplash.com/photo-1549465220-1a8b9238cd48?q=80&w=800&auto=format&fit=crop',
+        fallback: 'https://placehold.co/600x600/292524/f59e0b?text=Caki+Kilifi',
+        description: 'Çok amaçlı çakılar için çıtçıt kilitli, dayanıklı makine dikişli ve kapak üstü motif işlemeli kılıf. (Çakı dahil değildir).',
+        leatherType: '3.2mm Hakiki Deri',
+        specs: ['Çakı DAHİL DEĞİLDİR', 'Sağlam Makine Dikişi', 'Kapak Motif İşleme']
+      },
+
+      // 2. SİLAH KILIFLARI
+      {
+        id: 'sk-01',
+        name: 'İç Taşıma (IWB) Deri Tabanca Kılıfı',
+        category: 'silah-kilifi',
+        categoryName: 'Silah Kılıfı',
+        price: 1650,
+        image: 'https://images.unsplash.com/photo-1595590424283-b8f17842773f?q=80&w=800&auto=format&fit=crop',
+        fallback: 'https://placehold.co/600x600/292524/f59e0b?text=Silah+Kilifi+IWB',
+        description: 'Vücut terinden koruyan yüksek arka siperlik, çelik kemer klipsi ve mukavemetli makine dikişiyle güvenli taşıma.',
+        leatherType: '3.5mm Kalıplanmış Vaketa',
+        specs: ['Çelik yaylı klips', 'Ağır Hizmet Makine Dikişi', 'Glock, Canik, Sarsılmaz uyumlu']
+      },
+      {
+        id: 'sk-02',
+        name: 'Pancake Dış Taşıma Tabanca Kılıfı',
+        category: 'silah-kilifi',
+        categoryName: 'Silah Kılıfı',
+        price: 1850,
+        image: 'https://images.unsplash.com/photo-1584281722572-881523450c26?q=80&w=800&auto=format&fit=crop',
+        fallback: 'https://placehold.co/600x600/292524/f59e0b?text=Pancake+Kilif',
+        description: 'İki kulaklı pancake model; silah ağırlığını kemere eşit dağıtır. Ön yüzeyinde atölyemize ait zarif motif işlemeleri mevcuttur.',
+        leatherType: '4mm Vaketa Deri',
+        specs: ['Motif İşleme Detayı', 'Çift Dikiş Takviyesi', 'Özel Silah Kalıbı']
+      },
+
+      // 3. KEMERLER
+      {
+        id: 'km-01',
+        name: 'Motif İşlemeli 4.5 cm Ağır Hizmet Kot Kemeri',
+        category: 'kemer',
+        categoryName: 'Kemer',
+        price: 1250,
+        image: 'https://images.unsplash.com/photo-1624222247344-550fb60583dc?q=80&w=800&auto=format&fit=crop',
+        fallback: 'https://placehold.co/600x600/292524/f59e0b?text=Deri+Kemer+4cm',
+        description: 'Tek parça dolu mandalık vaketa deriden kesilmiştir. Boydan boya atölyemizin özel motif baskıları ve sağlam makine dikişiyle donatılmıştır.',
+        leatherType: '4mm Tek Parça Manda/Sığır',
+        specs: ['Masif toka', 'Boydan Boya Motif Baskı', 'Sağlam Makine Dikişi']
+      },
+      {
+        id: 'km-02',
+        name: 'Klasik Çift Sıra Makine Dikişli Deri Kemer',
+        category: 'kemer',
+        categoryName: 'Kemer',
+        price: 1400,
+        image: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?q=80&w=800&auto=format&fit=crop',
+        fallback: 'https://placehold.co/600x600/292524/f59e0b?text=Klasik+Kemer',
+        description: 'Kenar fitili ve boydan boya çift sıra sağlam makine dikişiyle hem takımlara hem günlük pantolonlara yakışan sağlam kemer.',
+        leatherType: '3.5mm Vaketa Deri',
+        specs: ['Çift sıra makine dikiş', 'Perdahlı kenarlar', 'Özel boy ölçüsü']
+      },
+
+      // 4. FİŞEKLİKLER
+      {
+        id: 'fs-01',
+        name: '12 Kalibre 24\'lü Motifli Avcı Fişekliği',
+        category: 'fiseklik',
+        categoryName: 'Fişeklik',
+        price: 2150,
+        image: 'https://images.unsplash.com/photo-1549465220-1a8b9238cd48?q=80&w=800&auto=format&fit=crop',
+        fallback: 'https://placehold.co/600x600/292524/f59e0b?text=12+Kalibre+Fiseklik',
+        description: 'Her biri kalıplanmış ve makine dikişiyle kilitlenmiş 24 adet fişek yuvası. Kemer kanatlarında atölyemizin özel av motifleri işlidir.',
+        leatherType: '3.8mm Vaketa Deri',
+        specs: ['12 ve 16 kalibre uyumlu', 'Avcı Motif İşlemeli', 'Ağır Hizmet Makine Dikişi']
+      },
+      {
+        id: 'fs-02',
+        name: 'Yivli Dipçik Üstü Fişeklik & Yanak Pedi',
+        category: 'fiseklik',
+        categoryName: 'Fişeklik',
+        price: 1100,
+        image: 'https://images.unsplash.com/photo-1595341888016-a392ef81b7de?q=80&w=800&auto=format&fit=crop',
+        fallback: 'https://placehold.co/600x600/292524/f59e0b?text=Dipcik+Fisekliği',
+        description: 'Tüfek dipçiğine bağlanan, 6 adet mermi yuvası bulunan, deri üzeri motif işlemeli dipçik kılıfı.',
+        leatherType: 'Hakiki Deri & Süet Astar',
+        specs: ['Tüfeği çizmez', 'Motif işlemeli deri', 'Sağlam dikişli yuvalar']
+      }
+    ];
+
+    let currentCategory = 'all';
+    let cart = JSON.parse(localStorage.getItem('dd_cart') || '[]');
+
+    // -------------------------------------------------------------
+    // Product Rendering & Filtering
+    // -------------------------------------------------------------
+    function renderProducts() {
+      const container = document.getElementById('products-grid');
+      const emptyState = document.getElementById('empty-state');
+      
+      const filtered = currentCategory === 'all' 
+        ? PRODUCTS 
+        : PRODUCTS.filter(p => p.category === currentCategory);
+
+      if (filtered.length === 0) {
+        container.innerHTML = '';
+        emptyState.classList.remove('hidden');
+        return;
+      }
+
+      emptyState.classList.add('hidden');
+      container.innerHTML = filtered.map(product => `
+        <div class="group bg-stone-900 rounded-2xl border border-stone-800 hover:border-amber-700/50 overflow-hidden flex flex-col justify-between transition-all duration-300 hover:shadow-xl hover:shadow-black/50">
+          
+          <div>
+            <!-- Image Container -->
+            <div class="relative aspect-square overflow-hidden bg-stone-950 cursor-pointer" onclick="openProductModal('${product.id}')">
+              <img 
+                src="${product.image}" 
+                alt="${product.name}" 
+                onerror="this.src='${product.fallback}'"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90 group-hover:opacity-100"
+              />
+              <div class="absolute top-3 left-3 bg-stone-950/80 backdrop-blur-md px-2.5 py-1 rounded-md text-[11px] font-medium text-amber-400 border border-amber-900/40">
+                ${product.categoryName}
+              </div>
+              <div class="absolute bottom-3 right-3 bg-stone-900/90 backdrop-blur-md px-2.5 py-1 rounded-md text-[11px] text-stone-300 border border-stone-700/60 flex items-center gap-1">
+                <i data-lucide="eye" class="w-3.5 h-3.5 text-amber-400"></i>
+                Detay
+              </div>
+            </div>
+
+            <!-- Content Area -->
+            <div class="p-5">
+              <span class="text-[11px] text-stone-400 block mb-1">Kod: #${product.id.toUpperCase()}</span>
+              <h3 class="font-serif font-bold text-stone-100 text-base leading-snug group-hover:text-amber-300 transition-colors cursor-pointer" onclick="openProductModal('${product.id}')">
+                ${product.name}
+              </h3>
+              
+              <p class="text-xs text-stone-400 mt-2 line-clamp-2 leading-relaxed">
+                ${product.description}
+              </p>
+
+              <div class="mt-3 flex flex-wrap gap-1.5">
+                <span class="text-[10px] px-2 py-0.5 rounded bg-stone-800 text-stone-300 border border-stone-700">
+                  ${product.leatherType}
+                </span>
+                <span class="text-[10px] px-2 py-0.5 rounded bg-amber-950/50 text-amber-300 border border-amber-700/40">
+                  Makine Dikişi
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Price & Actions Footer -->
+          <div class="p-5 pt-0 border-t border-stone-800/60 mt-4 space-y-3">
+            <div class="flex items-baseline justify-between pt-3">
+              <span class="text-xs text-stone-400">Kılıf Fiyatı (Bıçaksız)</span>
+              <span class="font-serif text-lg font-bold text-amber-400">${product.price.toLocaleString('tr-TR')} ₺</span>
+            </div>
+
+            <div class="grid grid-cols-5 gap-2">
+              <!-- Fast Direct WhatsApp Order Button -->
+              <button onclick="orderSingleProductViaWhatsApp('${product.id}')" class="col-span-4 py-2.5 px-3 rounded-xl bg-green-600 hover:bg-green-500 text-white text-xs font-semibold flex items-center justify-center gap-1.5 transition-colors shadow-md shadow-green-950/40">
+                <i data-lucide="message-circle" class="w-4 h-4"></i>
+                <span>WhatsApp ile Sipariş</span>
+              </button>
+              
+              <!-- Add to Cart / Order List -->
+              <button onclick="addToCart('${product.id}')" title="Sipariş Listesine Ekle" class="col-span-1 py-2.5 rounded-xl bg-stone-800 hover:bg-stone-700 text-stone-200 border border-stone-700 flex items-center justify-center transition-colors">
+                <i data-lucide="plus" class="w-4 h-4"></i>
+              </button>
+            </div>
+          </div>
+
+        </div>
+      `).join('');
+
+      lucide.createIcons();
+    }
+
+    function setCategory(cat) {
+      currentCategory = cat;
+      document.querySelectorAll('.cat-btn').forEach(btn => {
+        btn.classList.remove('active', 'bg-amber-600', 'text-white');
+        btn.classList.add('bg-stone-900', 'text-stone-300', 'border', 'border-stone-800');
+      });
+
+      const activeBtn = document.getElementById(`btn-cat-${cat}`);
+      if (activeBtn) {
+        activeBtn.classList.add('active', 'bg-amber-600', 'text-white');
+        activeBtn.classList.remove('bg-stone-900', 'text-stone-300', 'border', 'border-stone-800');
+      }
+
+      renderProducts();
+    }
+
+    // -------------------------------------------------------------
+    // Shopping Bag (Cart) Operations
+    // -------------------------------------------------------------
+    function addToCart(productId) {
+      const item = PRODUCTS.find(p => p.id === productId);
+      if (!item) return;
+
+      const existingIndex = cart.findIndex(c => c.id === productId);
+      if (existingIndex > -1) {
+        cart[existingIndex].quantity += 1;
+      } else {
+        cart.push({ ...item, quantity: 1 });
+      }
+
+      saveCart();
+      showToast(`"${item.name}" sipariş listenize eklendi`);
+    }
+
+    function removeFromCart(productId) {
+      cart = cart.filter(c => c.id !== productId);
+      saveCart();
+      renderCartUI();
+    }
+
+    function updateCartQuantity(productId, delta) {
+      const item = cart.find(c => c.id === productId);
+      if (!item) return;
+
+      item.quantity += delta;
+      if (item.quantity <= 0) {
+        removeFromCart(productId);
+      } else {
+        saveCart();
+        renderCartUI();
+      }
+    }
+
+    function saveCart() {
+      localStorage.setItem('dd_cart', JSON.stringify(cart));
+      updateCartBadge();
+    }
+
+    function updateCartBadge() {
+      const count = cart.reduce((acc, curr) => acc + curr.quantity, 0);
+      const badge = document.getElementById('cart-counter');
+      if (badge) badge.textContent = count;
+    }
+
+    function renderCartUI() {
+      const list = document.getElementById('cart-items-list');
+      const emptyMsg = document.getElementById('cart-empty-message');
+      const footer = document.getElementById('cart-footer');
+      const totalAmount = document.getElementById('cart-total-amount');
+
+      if (cart.length === 0) {
+        list.innerHTML = '';
+        emptyMsg.classList.remove('hidden');
+        footer.classList.add('opacity-50', 'pointer-events-none');
+        totalAmount.textContent = '0 ₺';
+        return;
+      }
+
+      emptyMsg.classList.add('hidden');
+      footer.classList.remove('opacity-50', 'pointer-events-none');
+
+      let total = 0;
+      list.innerHTML = cart.map(item => {
+        const itemTotal = item.price * item.quantity;
+        total += itemTotal;
+        return `
+          <div class="flex items-center gap-3 bg-stone-950/60 p-3 rounded-xl border border-stone-800">
+            <img src="${item.image}" onerror="this.src='${item.fallback}'" class="w-14 h-14 object-cover rounded-lg border border-stone-800 flex-shrink-0" />
+            <div class="flex-1 min-w-0">
+              <h4 class="text-xs font-semibold text-stone-200 truncate">${item.name}</h4>
+              <p class="text-[11px] text-amber-400 font-serif font-bold mt-0.5">${item.price.toLocaleString('tr-TR')} ₺</p>
+              
+              <div class="flex items-center gap-2 mt-2">
+                <button onclick="updateCartQuantity('${item.id}', -1)" class="w-6 h-6 rounded bg-stone-800 text-stone-300 hover:bg-stone-700 flex items-center justify-center text-xs font-bold">-</button>
+                <span class="text-xs font-mono text-stone-200 px-1">${item.quantity}</span>
+                <button onclick="updateCartQuantity('${item.id}', 1)" class="w-6 h-6 rounded bg-stone-800 text-stone-300 hover:bg-stone-700 flex items-center justify-center text-xs font-bold">+</button>
+              </div>
+            </div>
+            <button onclick="removeFromCart('${item.id}')" class="p-2 text-stone-500 hover:text-red-400 transition-colors">
+              <i data-lucide="trash-2" class="w-4 h-4"></i>
+            </button>
+          </div>
+        `;
+      }).join('');
+
+      totalAmount.textContent = total.toLocaleString('tr-TR') + ' ₺';
+      lucide.createIcons();
+    }
+
+    function toggleCartDrawer(show) {
+      const drawer = document.getElementById('cart-drawer');
+      if (show) {
+        renderCartUI();
+        drawer.classList.remove('hidden');
+      } else {
+        drawer.classList.add('hidden');
+      }
+    }
+
+    // -------------------------------------------------------------
+    // WhatsApp Order Link Generator Logic
+    // -------------------------------------------------------------
+    function getCleanPhone() {
+      return (appConfig.whatsappNumber || DEFAULT_CONFIG.whatsappNumber).replace(/[^0-9]/g, '');
+    }
+
+    // Single product instant order
+    function orderSingleProductViaWhatsApp(productId) {
+      const product = PRODUCTS.find(p => p.id === productId);
+      if (!product) return;
+
+      const phone = getCleanPhone();
+      const message = `Merhaba ${appConfig.storeName},\n\nSitenizden şu ürünü sipariş vermek istiyorum:\n\n`
+        + `📦 *Ürün:* ${product.name}\n`
+        + `🔖 *Ürün Kodu:* #${product.id.toUpperCase()}\n`
+        + `💰 *Fiyat:* ${product.price.toLocaleString('tr-TR')} TL\n`
+        + `🛡️ *Deri & Dikiş:* ${product.leatherType} / Sağlam Makine Dikişi\n\n`
+        + `Elinizdeki mevcut motif işleme desenleri ve bıçağımı kalıp için size kargolama süreci hakkında bilgi alabilir miyim?`;
+
+      const waUrl = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+      window.open(waUrl, '_blank');
+    }
+
+    // Multiple products bulk order from cart
+    function sendBulkWhatsAppOrder() {
+      if (cart.length === 0) return;
+
+      const phone = getCleanPhone();
+      let message = `Merhaba ${appConfig.storeName},\n\nSitenizden aşağıdaki ürünler için sipariş oluşturmak istiyorum:\n\n`;
+
+      let grandTotal = 0;
+      cart.forEach((item, index) => {
+        const itemTotal = item.price * item.quantity;
+        grandTotal += itemTotal;
+        message += `${index + 1}. *${item.name}* (x${item.quantity}) - ${itemTotal.toLocaleString('tr-TR')} TL\n`;
+        message += `   (Kod: #${item.id.toUpperCase()})\n`;
+      });
+
+      message += `\n💵 *Toplam Tutar:* ${grandTotal.toLocaleString('tr-TR')} TL\n\n`;
+      message += `Kalıp çıkarma, kargo ve ödeme detayları için görüşebilir miyiz?`;
+
+      const waUrl = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+      window.open(waUrl, '_blank');
+    }
+
+    // Custom Knife/Gun measurement order
+    function orderCustomMeasurement() {
+      const phone = getCleanPhone();
+      const message = `Merhaba ${appConfig.storeName},\n\nKendi bıçağım için özel kılıf yaptırmak istiyorum. Bıçağımın fotoğrafını göndereceğim ve kalıp çıkarmanız için atölyenize kargolamak istiyorum. Kargo adresi, fiyat ve elinizdeki motif seçenekleri hakkında bilgi alabilir miyim?`;
+      const waUrl = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+      window.open(waUrl, '_blank');
+    }
+
+    // General inquiry button
+    function directGeneralWhatsAppInquiry() {
+      const phone = getCleanPhone();
+      const message = `Merhaba Alper Deri, kılıf modelleriniz ve motif işlemeli deri ürünleriniz hakkında bilgi almak istiyorum.`;
+      const waUrl = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+      window.open(waUrl, '_blank');
+    }
+
+    // -------------------------------------------------------------
+    // Modals, Settings & FAQ Handlers
+    // -------------------------------------------------------------
+    function openProductModal(productId) {
+      const product = PRODUCTS.find(p => p.id === productId);
+      if (!product) return;
+
+      const modal = document.getElementById('product-modal');
+      const content = document.getElementById('modal-content');
+
+      content.innerHTML = `
+        <div class="grid grid-cols-1 md:grid-cols-2">
+          <div class="aspect-square bg-stone-950 overflow-hidden relative">
+            <img src="${product.image}" onerror="this.src='${product.fallback}'" class="w-full h-full object-cover">
+            <div class="absolute top-3 left-3 bg-amber-950/80 border border-amber-600/40 text-amber-300 text-xs px-2.5 py-1 rounded-md">
+              ${product.categoryName}
+            </div>
+            <div class="absolute bottom-3 left-3 right-3 bg-black/80 text-[10px] text-amber-300/90 p-2 rounded border border-amber-800/40">
+              ⚠️ Görseldeki bıçak satılık değildir, fiyata dahil değildir.
+            </div>
+          </div>
+          <div class="p-6 sm:p-8 flex flex-col justify-between">
+            <div>
+              <div class="flex justify-between items-start">
+                <span class="text-xs text-stone-400 font-mono">#${product.id.toUpperCase()}</span>
+                <button onclick="closeProductModal()" class="text-stone-400 hover:text-stone-100 p-1">
+                  <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
+              </div>
+
+              <h2 class="text-xl font-serif font-bold text-stone-100 mt-2">${product.name}</h2>
+              <p class="text-2xl font-serif font-bold text-amber-400 mt-2">${product.price.toLocaleString('tr-TR')} ₺</p>
+
+              <p class="text-stone-300 text-xs sm:text-sm mt-4 leading-relaxed">${product.description}</p>
+
+              <div class="mt-4 pt-4 border-t border-stone-800 space-y-2">
+                <p class="text-xs text-stone-400"><strong class="text-stone-300">Deri & Dikiş:</strong> ${product.leatherType} • Makine Dikişi</p>
+                <div class="flex flex-wrap gap-1.5 mt-2">
+                  ${product.specs.map(s => `<span class="text-[11px] px-2 py-0.5 rounded bg-stone-800 text-stone-300 border border-stone-700">${s}</span>`).join('')}
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-6 pt-4 border-t border-stone-800 space-y-2">
+              <button onclick="orderSingleProductViaWhatsApp('${product.id}')" class="w-full py-3 rounded-xl bg-green-600 hover:bg-green-500 text-white text-xs sm:text-sm font-semibold flex items-center justify-center gap-2 shadow-lg shadow-green-950/50 transition-colors">
+                <i data-lucide="message-circle" class="w-4 h-4"></i>
+                <span>WhatsApp ile Sipariş & Kalıp Bilgisi Al</span>
+              </button>
+              <button onclick="addToCart('${product.id}'); closeProductModal();" class="w-full py-2.5 rounded-xl bg-stone-800 hover:bg-stone-700 text-stone-200 text-xs sm:text-sm font-medium transition-colors">
+                Sipariş Listesine Ekle
+              </button>
+            </div>
+          </div>
+        </div>
+      `;
+
+      modal.classList.remove('hidden');
+      lucide.createIcons();
+    }
+
+    function closeProductModal() {
+      document.getElementById('product-modal').classList.add('hidden');
+    }
+
+    function toggleSettingsModal(show) {
+      const modal = document.getElementById('settings-modal');
+      if (show) {
+        document.getElementById('setting-phone').value = appConfig.whatsappNumber;
+        document.getElementById('setting-store-name').value = appConfig.storeName;
+        modal.classList.remove('hidden');
+      } else {
+        modal.classList.add('hidden');
+      }
+    }
+
+    function saveSettings(e) {
+      e.preventDefault();
+      const phoneInput = document.getElementById('setting-phone').value.trim();
+      const storeInput = document.getElementById('setting-store-name').value.trim();
+
+      if (!phoneInput) {
+        showToast('Lütfen geçerli bir telefon numarası girin');
+        return;
+      }
+
+      appConfig.whatsappNumber = phoneInput;
+      appConfig.storeName = storeInput || DEFAULT_CONFIG.storeName;
+
+      localStorage.setItem('dd_phone_alper', appConfig.whatsappNumber);
+      localStorage.setItem('dd_store_alper', appConfig.storeName);
+
+      applyBranding();
+      toggleSettingsModal(false);
+      showToast('Ayarlar başarıyla kaydedildi');
+    }
+
+    function applyBranding() {
+      const navBrand = document.getElementById('nav-brand-title');
+      const footerBrand = document.getElementById('footer-brand-title');
+      if (navBrand) navBrand.textContent = appConfig.storeName;
+      if (footerBrand) footerBrand.textContent = appConfig.storeName.toUpperCase();
+    }
+
+    // FAQ Accordion with safe Lucide icon rotation
+    function toggleFaq(btn) {
+      const answer = btn.nextElementSibling;
+      const chevron = btn.querySelector('.faq-chevron') || btn.querySelector('svg');
+      
+      const isHidden = answer.classList.contains('hidden');
+      if (isHidden) {
+        answer.classList.remove('hidden');
+        if (chevron) chevron.classList.add('rotate-180');
+      } else {
+        answer.classList.add('hidden');
+        if (chevron) chevron.classList.remove('rotate-180');
+      }
+    }
+
+    // Toast Notification Banner (No alert() usage)
+    function showToast(message) {
+      const toast = document.getElementById('toast');
+      const toastMsg = document.getElementById('toast-message');
+      toastMsg.textContent = message;
+      
+      toast.classList.remove('translate-y-20', 'opacity-0');
+      toast.classList.add('translate-y-0', 'opacity-100');
+
+      setTimeout(() => {
+        toast.classList.remove('translate-y-0', 'opacity-100');
+        toast.classList.add('translate-y-20', 'opacity-0');
+      }, 3000);
+    }
+
+    // Initialize application on load
+    window.addEventListener('DOMContentLoaded', () => {
+      document.getElementById('current-year').textContent = new Date().getFullYear();
+      applyBranding();
+      renderProducts();
+      updateCartBadge();
+      lucide.createIcons();
+    });
+  </script>
+</body>
+</html>
