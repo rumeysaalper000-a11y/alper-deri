@@ -7,7 +7,7 @@
   
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Google Fonts: Inter & Playfair Display -->
+  <!-- Google Fonts: Cinzel & Inter -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -35,11 +35,6 @@
               800: '#754030',
               900: '#5f352a',
               950: '#331a14',
-            },
-            bronze: {
-              400: '#d4af37',
-              500: '#c59b27',
-              600: '#a37c18',
             }
           }
         }
@@ -48,9 +43,10 @@
   </script>
 
   <style>
-    /* Custom subtle textures and scrollbar styling */
+    /* Custom scrollbar styling */
     ::-webkit-scrollbar {
       width: 8px;
+      height: 6px;
     }
     ::-webkit-scrollbar-track {
       background: #181514;
@@ -214,7 +210,7 @@
           Atölye Koleksiyonu
         </h2>
         <p class="text-stone-400 text-sm mt-1">
-          Beğendiğiniz ürünü doğrudan WhatsApp'tan sipariş verebilir veya listenize ekleyebilirsiniz.
+          Ürünlerin tüm açıdan fotoğraflarını görmek için resme tıklayabilir, doğrudan WhatsApp'tan sipariş verebilirsiniz.
         </p>
       </div>
 
@@ -482,14 +478,14 @@
     </div>
   </div>
 
-  <!-- Product Detail Modal -->
+  <!-- Product Detail Modal (Multiple Images Gallery Support) -->
   <div id="product-modal" class="fixed inset-0 z-50 overflow-y-auto hidden">
     <div class="min-h-screen px-4 text-center flex items-center justify-center">
       <div class="fixed inset-0 bg-black/80 backdrop-blur-sm transition-opacity" onclick="closeProductModal()"></div>
       
-      <div class="inline-block w-full max-w-2xl my-8 text-left bg-stone-900 border border-stone-700/80 rounded-2xl shadow-2xl overflow-hidden relative z-10">
+      <div class="inline-block w-full max-w-3xl my-8 text-left bg-stone-900 border border-stone-700/80 rounded-2xl shadow-2xl overflow-hidden relative z-10">
         <div id="modal-content">
-          <!-- Injected dynamically via JS -->
+          <!-- Injected dynamically via JS with Multi-image Slider -->
         </div>
       </div>
     </div>
@@ -541,17 +537,19 @@
     // Configuration & Persistent State
     // -------------------------------------------------------------
     const DEFAULT_CONFIG = {
-      whatsappNumber: '905356595434', // 0535 659 54 34
+      whatsappNumber: '905356595434',
       storeName: 'Alper Deri'
     };
 
-    // Alper Deri bilgileri ile öncelikli eşitleme
     let appConfig = {
       whatsappNumber: localStorage.getItem('dd_phone_alper') || DEFAULT_CONFIG.whatsappNumber,
       storeName: localStorage.getItem('dd_store_alper') || DEFAULT_CONFIG.storeName
     };
 
-    // Products Database: Bıçak Kılıfı, Silah Kılıfı, Kemer, Fişeklik
+    // -------------------------------------------------------------
+    // Products Database (Now Supporting 'images: [...]' arrays!)
+    // İstediğiniz her ürüne 1, 2, 3 veya daha fazla fotoğraf linki ekleyebilirsiniz.
+    // -------------------------------------------------------------
     const PRODUCTS = [
       // 1. BIÇAK KILIFLARI
       {
@@ -560,9 +558,11 @@
         category: 'bicak-kilifi',
         categoryName: 'Bıçak Kılıfı',
         price: 1350,
-        image: 'https://images.unsplash.com/photo-1595341888016-a392ef81b7de?q=80&w=800&auto=format&fit=crop',
+        images: [
+          'resimler/1.jpg',
+        ],
         fallback: 'https://placehold.co/600x600/292524/f59e0b?text=Bicak+Kilifi+1',
-        description: '3.8 mm vaketa deri, sağlam makine dikişi, atölyemizdeki hazır desen kalıplarıyla kabartma işleme ve ateş başlatıcı yuvası. (Bıçak kılıfa dahil değildir, kalıp için bıçağınızı kargolamanız gerekir).',
+        description: '3.8 mm dolu vaketa deri, sağlam makine dikişi, atölyemizdeki hazır desen kalıplarıyla kabartma işleme ve ateş başlatıcı yuvası. (Bıçak kılıfa dahil değildir, kalıp için bıçağınızı kargolamanız gerekir).',
         leatherType: '3.8mm Sığır Vaketa',
         specs: ['Bıçak DAHİL DEĞİLDİR', 'Sağlam Makine Dikişi', 'Özel Motif Baskısı', 'Kalıp İçin Kargolayınız']
       },
@@ -572,7 +572,10 @@
         category: 'bicak-kilifi',
         categoryName: 'Bıçak Kılıfı',
         price: 1450,
-        image: 'https://images.unsplash.com/photo-1589256469067-ea99122bbdc4?q=80&w=800&auto=format&fit=crop',
+        images: [
+          'https://images.unsplash.com/photo-1589256469067-ea99122bbdc4?q=80&w=800&auto=format&fit=crop',
+          'https://images.unsplash.com/photo-1595341888016-a392ef81b7de?q=80&w=800&auto=format&fit=crop'
+        ],
         fallback: 'https://placehold.co/600x600/292524/f59e0b?text=Dangler+Kilif',
         description: 'Döner pirinç halkalı Dangler sistemi. Deri yüzeyine atölyemizin zanaat motifleri işlenir. Bıçağınızın birebir ölçüsüne göre kalıplanır. (Bıçak dahil değildir).',
         leatherType: '4mm Vaketa Deri',
@@ -584,7 +587,10 @@
         category: 'bicak-kilifi',
         categoryName: 'Bıçak Kılıfı',
         price: 850,
-        image: 'https://images.unsplash.com/photo-1549465220-1a8b9238cd48?q=80&w=800&auto=format&fit=crop',
+        images: [
+          'https://images.unsplash.com/photo-1549465220-1a8b9238cd48?q=80&w=800&auto=format&fit=crop',
+          'https://images.unsplash.com/photo-1595341888016-a392ef81b7de?q=80&w=800&auto=format&fit=crop'
+        ],
         fallback: 'https://placehold.co/600x600/292524/f59e0b?text=Caki+Kilifi',
         description: 'Çok amaçlı çakılar için çıtçıt kilitli, dayanıklı makine dikişli ve kapak üstü motif işlemeli kılıf. (Çakı dahil değildir).',
         leatherType: '3.2mm Hakiki Deri',
@@ -598,7 +604,10 @@
         category: 'silah-kilifi',
         categoryName: 'Silah Kılıfı',
         price: 1650,
-        image: 'https://images.unsplash.com/photo-1595590424283-b8f17842773f?q=80&w=800&auto=format&fit=crop',
+        images: [
+          'https://images.unsplash.com/photo-1595590424283-b8f17842773f?q=80&w=800&auto=format&fit=crop',
+          'https://images.unsplash.com/photo-1584281722572-881523450c26?q=80&w=800&auto=format&fit=crop'
+        ],
         fallback: 'https://placehold.co/600x600/292524/f59e0b?text=Silah+Kilifi+IWB',
         description: 'Vücut terinden koruyan yüksek arka siperlik, çelik kemer klipsi ve mukavemetli makine dikişiyle güvenli taşıma.',
         leatherType: '3.5mm Kalıplanmış Vaketa',
@@ -610,7 +619,10 @@
         category: 'silah-kilifi',
         categoryName: 'Silah Kılıfı',
         price: 1850,
-        image: 'https://images.unsplash.com/photo-1584281722572-881523450c26?q=80&w=800&auto=format&fit=crop',
+        images: [
+          'https://images.unsplash.com/photo-1584281722572-881523450c26?q=80&w=800&auto=format&fit=crop',
+          'https://images.unsplash.com/photo-1595590424283-b8f17842773f?q=80&w=800&auto=format&fit=crop'
+        ],
         fallback: 'https://placehold.co/600x600/292524/f59e0b?text=Pancake+Kilif',
         description: 'İki kulaklı pancake model; silah ağırlığını kemere eşit dağıtır. Ön yüzeyinde atölyemize ait zarif motif işlemeleri mevcuttur.',
         leatherType: '4mm Vaketa Deri',
@@ -624,7 +636,10 @@
         category: 'kemer',
         categoryName: 'Kemer',
         price: 1250,
-        image: 'https://images.unsplash.com/photo-1624222247344-550fb60583dc?q=80&w=800&auto=format&fit=crop',
+        images: [
+          'https://images.unsplash.com/photo-1624222247344-550fb60583dc?q=80&w=800&auto=format&fit=crop',
+          'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?q=80&w=800&auto=format&fit=crop'
+        ],
         fallback: 'https://placehold.co/600x600/292524/f59e0b?text=Deri+Kemer+4cm',
         description: 'Tek parça dolu mandalık vaketa deriden kesilmiştir. Boydan boya atölyemizin özel motif baskıları ve sağlam makine dikişiyle donatılmıştır.',
         leatherType: '4mm Tek Parça Manda/Sığır',
@@ -636,7 +651,10 @@
         category: 'kemer',
         categoryName: 'Kemer',
         price: 1400,
-        image: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?q=80&w=800&auto=format&fit=crop',
+        images: [
+          'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?q=80&w=800&auto=format&fit=crop',
+          'https://images.unsplash.com/photo-1624222247344-550fb60583dc?q=80&w=800&auto=format&fit=crop'
+        ],
         fallback: 'https://placehold.co/600x600/292524/f59e0b?text=Klasik+Kemer',
         description: 'Kenar fitili ve boydan boya çift sıra sağlam makine dikişiyle hem takımlara hem günlük pantolonlara yakışan sağlam kemer.',
         leatherType: '3.5mm Vaketa Deri',
@@ -650,7 +668,10 @@
         category: 'fiseklik',
         categoryName: 'Fişeklik',
         price: 2150,
-        image: 'https://images.unsplash.com/photo-1549465220-1a8b9238cd48?q=80&w=800&auto=format&fit=crop',
+        images: [
+          'https://images.unsplash.com/photo-1549465220-1a8b9238cd48?q=80&w=800&auto=format&fit=crop',
+          'https://images.unsplash.com/photo-1595341888016-a392ef81b7de?q=80&w=800&auto=format&fit=crop'
+        ],
         fallback: 'https://placehold.co/600x600/292524/f59e0b?text=12+Kalibre+Fiseklik',
         description: 'Her biri kalıplanmış ve makine dikişiyle kilitlenmiş 24 adet fişek yuvası. Kemer kanatlarında atölyemizin özel av motifleri işlidir.',
         leatherType: '3.8mm Vaketa Deri',
@@ -662,7 +683,10 @@
         category: 'fiseklik',
         categoryName: 'Fişeklik',
         price: 1100,
-        image: 'https://images.unsplash.com/photo-1595341888016-a392ef81b7de?q=80&w=800&auto=format&fit=crop',
+        images: [
+          'https://images.unsplash.com/photo-1595341888016-a392ef81b7de?q=80&w=800&auto=format&fit=crop',
+          'https://images.unsplash.com/photo-1549465220-1a8b9238cd48?q=80&w=800&auto=format&fit=crop'
+        ],
         fallback: 'https://placehold.co/600x600/292524/f59e0b?text=Dipcik+Fisekliği',
         description: 'Tüfek dipçiğine bağlanan, 6 adet mermi yuvası bulunan, deri üzeri motif işlemeli dipçik kılıfı.',
         leatherType: 'Hakiki Deri & Süet Astar',
@@ -672,6 +696,17 @@
 
     let currentCategory = 'all';
     let cart = JSON.parse(localStorage.getItem('dd_cart') || '[]');
+
+    // Helper: Resimleri array olarak döner (tekil `image` veya çoklu `images` uyumlu)
+    function getProductImages(product) {
+      if (product.images && Array.isArray(product.images) && product.images.length > 0) {
+        return product.images;
+      }
+      if (product.image) {
+        return [product.image];
+      }
+      return [product.fallback];
+    }
 
     // -------------------------------------------------------------
     // Product Rendering & Filtering
@@ -691,72 +726,88 @@
       }
 
       emptyState.classList.add('hidden');
-      container.innerHTML = filtered.map(product => `
-        <div class="group bg-stone-900 rounded-2xl border border-stone-800 hover:border-amber-700/50 overflow-hidden flex flex-col justify-between transition-all duration-300 hover:shadow-xl hover:shadow-black/50">
-          
-          <div>
-            <!-- Image Container -->
-            <div class="relative aspect-square overflow-hidden bg-stone-950 cursor-pointer" onclick="openProductModal('${product.id}')">
-              <img 
-                src="${product.image}" 
-                alt="${product.name}" 
-                onerror="this.src='${product.fallback}'"
-                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90 group-hover:opacity-100"
-              />
-              <div class="absolute top-3 left-3 bg-stone-950/80 backdrop-blur-md px-2.5 py-1 rounded-md text-[11px] font-medium text-amber-400 border border-amber-900/40">
-                ${product.categoryName}
+      container.innerHTML = filtered.map(product => {
+        const productImgs = getProductImages(product);
+        const coverImage = productImgs[0];
+        const hasMultiple = productImgs.length > 1;
+
+        return `
+          <div class="group bg-stone-900 rounded-2xl border border-stone-800 hover:border-amber-700/50 overflow-hidden flex flex-col justify-between transition-all duration-300 hover:shadow-xl hover:shadow-black/50">
+            
+            <div>
+              <!-- Image Container -->
+              <div class="relative aspect-square overflow-hidden bg-stone-950 cursor-pointer" onclick="openProductModal('${product.id}')">
+                <img 
+                  src="${coverImage}" 
+                  alt="${product.name}" 
+                  onerror="this.src='${product.fallback}'"
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90 group-hover:opacity-100"
+                />
+                
+                <div class="absolute top-3 left-3 bg-stone-950/80 backdrop-blur-md px-2.5 py-1 rounded-md text-[11px] font-medium text-amber-400 border border-amber-900/40">
+                  ${product.categoryName}
+                </div>
+
+                <!-- Birden fazla resim varsa resim adedi rozeti -->
+                ${hasMultiple ? `
+                  <div class="absolute top-3 right-3 bg-stone-950/80 backdrop-blur-md px-2 py-0.5 rounded-md text-[10px] font-medium text-stone-300 border border-stone-800 flex items-center gap-1">
+                    <i data-lucide="images" class="w-3 h-3 text-amber-400"></i>
+                    <span>${productImgs.length} Resim</span>
+                  </div>
+                ` : ''}
+
+                <div class="absolute bottom-3 right-3 bg-stone-900/90 backdrop-blur-md px-2.5 py-1 rounded-md text-[11px] text-stone-300 border border-stone-700/60 flex items-center gap-1">
+                  <i data-lucide="eye" class="w-3.5 h-3.5 text-amber-400"></i>
+                  Detayları Gör
+                </div>
               </div>
-              <div class="absolute bottom-3 right-3 bg-stone-900/90 backdrop-blur-md px-2.5 py-1 rounded-md text-[11px] text-stone-300 border border-stone-700/60 flex items-center gap-1">
-                <i data-lucide="eye" class="w-3.5 h-3.5 text-amber-400"></i>
-                Detay
+
+              <!-- Content Area -->
+              <div class="p-5">
+                <span class="text-[11px] text-stone-400 block mb-1">Kod: #${product.id.toUpperCase()}</span>
+                <h3 class="font-serif font-bold text-stone-100 text-base leading-snug group-hover:text-amber-300 transition-colors cursor-pointer" onclick="openProductModal('${product.id}')">
+                  ${product.name}
+                </h3>
+                
+                <p class="text-xs text-stone-400 mt-2 line-clamp-2 leading-relaxed">
+                  ${product.description}
+                </p>
+
+                <div class="mt-3 flex flex-wrap gap-1.5">
+                  <span class="text-[10px] px-2 py-0.5 rounded bg-stone-800 text-stone-300 border border-stone-700">
+                    ${product.leatherType}
+                  </span>
+                  <span class="text-[10px] px-2 py-0.5 rounded bg-amber-950/50 text-amber-300 border border-amber-700/40">
+                    Makine Dikişi
+                  </span>
+                </div>
               </div>
             </div>
 
-            <!-- Content Area -->
-            <div class="p-5">
-              <span class="text-[11px] text-stone-400 block mb-1">Kod: #${product.id.toUpperCase()}</span>
-              <h3 class="font-serif font-bold text-stone-100 text-base leading-snug group-hover:text-amber-300 transition-colors cursor-pointer" onclick="openProductModal('${product.id}')">
-                ${product.name}
-              </h3>
-              
-              <p class="text-xs text-stone-400 mt-2 line-clamp-2 leading-relaxed">
-                ${product.description}
-              </p>
+            <!-- Price & Actions Footer -->
+            <div class="p-5 pt-0 border-t border-stone-800/60 mt-4 space-y-3">
+              <div class="flex items-baseline justify-between pt-3">
+                <span class="text-xs text-stone-400">Kılıf Fiyatı (Bıçaksız)</span>
+                <span class="font-serif text-lg font-bold text-amber-400">${product.price.toLocaleString('tr-TR')} ₺</span>
+              </div>
 
-              <div class="mt-3 flex flex-wrap gap-1.5">
-                <span class="text-[10px] px-2 py-0.5 rounded bg-stone-800 text-stone-300 border border-stone-700">
-                  ${product.leatherType}
-                </span>
-                <span class="text-[10px] px-2 py-0.5 rounded bg-amber-950/50 text-amber-300 border border-amber-700/40">
-                  Makine Dikişi
-                </span>
+              <div class="grid grid-cols-5 gap-2">
+                <!-- Fast Direct WhatsApp Order Button -->
+                <button onclick="orderSingleProductViaWhatsApp('${product.id}')" class="col-span-4 py-2.5 px-3 rounded-xl bg-green-600 hover:bg-green-500 text-white text-xs font-semibold flex items-center justify-center gap-1.5 transition-colors shadow-md shadow-green-950/40">
+                  <i data-lucide="message-circle" class="w-4 h-4"></i>
+                  <span>WhatsApp ile Sipariş</span>
+                </button>
+                
+                <!-- Add to Cart / Order List -->
+                <button onclick="addToCart('${product.id}')" title="Sipariş Listesine Ekle" class="col-span-1 py-2.5 rounded-xl bg-stone-800 hover:bg-stone-700 text-stone-200 border border-stone-700 flex items-center justify-center transition-colors">
+                  <i data-lucide="plus" class="w-4 h-4"></i>
+                </button>
               </div>
             </div>
+
           </div>
-
-          <!-- Price & Actions Footer -->
-          <div class="p-5 pt-0 border-t border-stone-800/60 mt-4 space-y-3">
-            <div class="flex items-baseline justify-between pt-3">
-              <span class="text-xs text-stone-400">Kılıf Fiyatı (Bıçaksız)</span>
-              <span class="font-serif text-lg font-bold text-amber-400">${product.price.toLocaleString('tr-TR')} ₺</span>
-            </div>
-
-            <div class="grid grid-cols-5 gap-2">
-              <!-- Fast Direct WhatsApp Order Button -->
-              <button onclick="orderSingleProductViaWhatsApp('${product.id}')" class="col-span-4 py-2.5 px-3 rounded-xl bg-green-600 hover:bg-green-500 text-white text-xs font-semibold flex items-center justify-center gap-1.5 transition-colors shadow-md shadow-green-950/40">
-                <i data-lucide="message-circle" class="w-4 h-4"></i>
-                <span>WhatsApp ile Sipariş</span>
-              </button>
-              
-              <!-- Add to Cart / Order List -->
-              <button onclick="addToCart('${product.id}')" title="Sipariş Listesine Ekle" class="col-span-1 py-2.5 rounded-xl bg-stone-800 hover:bg-stone-700 text-stone-200 border border-stone-700 flex items-center justify-center transition-colors">
-                <i data-lucide="plus" class="w-4 h-4"></i>
-              </button>
-            </div>
-          </div>
-
-        </div>
-      `).join('');
+        `;
+      }).join('');
 
       lucide.createIcons();
     }
@@ -846,9 +897,11 @@
       list.innerHTML = cart.map(item => {
         const itemTotal = item.price * item.quantity;
         total += itemTotal;
+        const cover = getProductImages(item)[0];
+
         return `
           <div class="flex items-center gap-3 bg-stone-950/60 p-3 rounded-xl border border-stone-800">
-            <img src="${item.image}" onerror="this.src='${item.fallback}'" class="w-14 h-14 object-cover rounded-lg border border-stone-800 flex-shrink-0" />
+            <img src="${cover}" onerror="this.src='${item.fallback}'" class="w-14 h-14 object-cover rounded-lg border border-stone-800 flex-shrink-0" />
             <div class="flex-1 min-w-0">
               <h4 class="text-xs font-semibold text-stone-200 truncate">${item.name}</h4>
               <p class="text-[11px] text-amber-400 font-serif font-bold mt-0.5">${item.price.toLocaleString('tr-TR')} ₺</p>
@@ -887,7 +940,6 @@
       return (appConfig.whatsappNumber || DEFAULT_CONFIG.whatsappNumber).replace(/[^0-9]/g, '');
     }
 
-    // Single product instant order
     function orderSingleProductViaWhatsApp(productId) {
       const product = PRODUCTS.find(p => p.id === productId);
       if (!product) return;
@@ -904,7 +956,6 @@
       window.open(waUrl, '_blank');
     }
 
-    // Multiple products bulk order from cart
     function sendBulkWhatsAppOrder() {
       if (cart.length === 0) return;
 
@@ -926,7 +977,6 @@
       window.open(waUrl, '_blank');
     }
 
-    // Custom Knife/Gun measurement order
     function orderCustomMeasurement() {
       const phone = getCleanPhone();
       const message = `Merhaba ${appConfig.storeName},\n\nKendi bıçağım için özel kılıf yaptırmak istiyorum. Bıçağımın fotoğrafını göndereceğim ve kalıp çıkarmanız için atölyenize kargolamak istiyorum. Kargo adresi, fiyat ve elinizdeki motif seçenekleri hakkında bilgi alabilir miyim?`;
@@ -934,7 +984,6 @@
       window.open(waUrl, '_blank');
     }
 
-    // General inquiry button
     function directGeneralWhatsAppInquiry() {
       const phone = getCleanPhone();
       const message = `Merhaba Alper Deri, kılıf modelleriniz ve motif işlemeli deri ürünleriniz hakkında bilgi almak istiyorum.`;
@@ -943,26 +992,70 @@
     }
 
     // -------------------------------------------------------------
-    // Modals, Settings & FAQ Handlers
+    // Product Gallery Modal Logic (Multiple Images Switcher)
     // -------------------------------------------------------------
+    function switchModalImage(imgUrl, clickedThumb) {
+      const mainImg = document.getElementById('modal-main-img');
+      if (mainImg) {
+        mainImg.src = imgUrl;
+      }
+      document.querySelectorAll('.modal-thumb-item').forEach(thumb => {
+        thumb.classList.remove('ring-2', 'ring-amber-500', 'opacity-100');
+        thumb.classList.add('opacity-60');
+      });
+      if (clickedThumb) {
+        clickedThumb.classList.add('ring-2', 'ring-amber-500', 'opacity-100');
+        clickedThumb.classList.remove('opacity-60');
+      }
+    }
+
     function openProductModal(productId) {
       const product = PRODUCTS.find(p => p.id === productId);
       if (!product) return;
 
       const modal = document.getElementById('product-modal');
       const content = document.getElementById('modal-content');
+      const images = getProductImages(product);
 
       content.innerHTML = `
         <div class="grid grid-cols-1 md:grid-cols-2">
-          <div class="aspect-square bg-stone-950 overflow-hidden relative">
-            <img src="${product.image}" onerror="this.src='${product.fallback}'" class="w-full h-full object-cover">
-            <div class="absolute top-3 left-3 bg-amber-950/80 border border-amber-600/40 text-amber-300 text-xs px-2.5 py-1 rounded-md">
-              ${product.categoryName}
+          
+          <!-- Sol Kısım: Büyük Resim ve Çoklu Küçük Resimler (Thumbnail Galerisi) -->
+          <div class="flex flex-col bg-stone-950">
+            <div class="aspect-square bg-stone-950 overflow-hidden relative">
+              <img 
+                id="modal-main-img" 
+                src="${images[0]}" 
+                onerror="this.src='${product.fallback}'" 
+                class="w-full h-full object-cover transition-all duration-300"
+              />
+              <div class="absolute top-3 left-3 bg-amber-950/90 border border-amber-600/40 text-amber-300 text-xs px-2.5 py-1 rounded-md font-medium">
+                ${product.categoryName}
+              </div>
+              <div class="absolute bottom-3 left-3 right-3 bg-black/85 text-[10px] text-amber-300/95 p-2 rounded border border-amber-800/40">
+                ⚠️ Görseldeki bıçak satılık değildir, fiyata dahil değildir. Kalıp için bıçağınızı kargolamanız gerekir.
+              </div>
             </div>
-            <div class="absolute bottom-3 left-3 right-3 bg-black/80 text-[10px] text-amber-300/90 p-2 rounded border border-amber-800/40">
-              ⚠️ Görseldeki bıçak satılık değildir, fiyata dahil değildir.
-            </div>
+
+            <!-- Çoklu Resim Seçim Şeridi (Birden fazla resim varsa görünür) -->
+            ${images.length > 1 ? `
+              <div class="p-3 bg-stone-900/90 border-t border-stone-800 flex items-center gap-2 overflow-x-auto">
+                <span class="text-[10px] text-stone-400 uppercase tracking-wider font-semibold mr-1 flex items-center gap-1">
+                  <i data-lucide="images" class="w-3.5 h-3.5 text-amber-400"></i> Açılar:
+                </span>
+                ${images.map((img, idx) => `
+                  <button 
+                    onclick="switchModalImage('${img}', this)" 
+                    class="modal-thumb-item relative w-12 h-12 rounded-lg overflow-hidden border border-stone-700 flex-shrink-0 transition-all ${idx === 0 ? 'ring-2 ring-amber-500 opacity-100' : 'opacity-60 hover:opacity-100'}"
+                  >
+                    <img src="${img}" class="w-full h-full object-cover" onerror="this.src='${product.fallback}'">
+                  </button>
+                `).join('')}
+              </div>
+            ` : ''}
           </div>
+
+          <!-- Sağ Kısım: Ürün Detayları ve Butonlar -->
           <div class="p-6 sm:p-8 flex flex-col justify-between">
             <div>
               <div class="flex justify-between items-start">
@@ -1045,7 +1138,6 @@
       if (footerBrand) footerBrand.textContent = appConfig.storeName.toUpperCase();
     }
 
-    // FAQ Accordion with safe Lucide icon rotation
     function toggleFaq(btn) {
       const answer = btn.nextElementSibling;
       const chevron = btn.querySelector('.faq-chevron') || btn.querySelector('svg');
@@ -1060,7 +1152,6 @@
       }
     }
 
-    // Toast Notification Banner (No alert() usage)
     function showToast(message) {
       const toast = document.getElementById('toast');
       const toastMsg = document.getElementById('toast-message');
